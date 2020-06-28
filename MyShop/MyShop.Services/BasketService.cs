@@ -87,7 +87,7 @@ namespace MyShop.Services
         {
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == itemId);
-            if (itemId != null)
+            if (item != null)
             {
                 basket.BasketItems.Remove(item);
                 basketContext.Commit();
@@ -105,6 +105,7 @@ namespace MyShop.Services
                                   Id = b.Id,
                                   Quantity = b.Quantity,
                                   ProductName = p.Name,
+                                  Image = p.Image,
                                   Price = p.Price
                               }
                               ).ToList();
